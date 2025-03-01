@@ -17,7 +17,7 @@ export default function SearchBar({ onSearchResults }: SearchBarProps) {
 
     return (
         <div className="mb-8">
-            <div className="flex w-full max-w-md mx-auto">
+            <div className="flex flex-col gap-2 w-full max-w-md mx-auto">
                 <input
                     type="text"
                     value={searchTerm}
@@ -25,7 +25,10 @@ export default function SearchBar({ onSearchResults }: SearchBarProps) {
                     placeholder="Search Pokémon by name..."
                     className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
+                <p className='text-red-700 text-sm mx-auto flex'>Server side searching is not implemented</p>
             </div>
+            {/* <div className='mx-auto'> */}
+            {/* </div> */}
         </div>
     );
 }

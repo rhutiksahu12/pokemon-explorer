@@ -3,13 +3,16 @@ import { notFound } from 'next/navigation';
 import PokemonDetail from '../../../components/PokemonDetail';
 import { fetchPokemonDetail } from '@/lib/pokemonApi';
 
-interface PokemonPageProps {
+// Correct type definition for Next.js App Router
+type Props = {
     params: {
         id: string;
     };
-}
+    searchParams?: Record<string, string | string[] | undefined>;
+};
 
-export async function generateMetadata({ params }: PokemonPageProps) {
+// Use the Props type for both functions
+export async function generateMetadata({ params }: Props) {
     const pokemon = await fetchPokemonDetail(params.id);
 
     if (!pokemon) {
@@ -24,7 +27,7 @@ export async function generateMetadata({ params }: PokemonPageProps) {
     };
 }
 
-export default async function PokemonPage({ params }: PokemonPageProps) {
+export default async function PokemonPage({ params }: Props) {
     const pokemon = await fetchPokemonDetail(params.id);
 
     if (!pokemon) {
